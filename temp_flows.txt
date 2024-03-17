@@ -1,0 +1,41 @@
+Main Program Loop
+
+1. Start
+2. Load Existing File (Optional):
+    Prompt user if they want to load a file.
+    If yes, open file dialog.
+    Read file contents into a data structure.
+3. Text Editing Interface:
+    Display a text editing area (e.g., a text box).
+    Event Loop:
+        Listen for user input (key presses, mouse clicks, menu actions)
+        Actions Based on Input:
+        Typing: Add/modify text
+        Copy/Cut/Paste: Implement clipboard functionality
+        Delete: Remove text
+        Search: Locate text within the document
+        Saving: Save current content to a file
+        New File Creation: Start a new document
+        Print: Send the document to a printer
+4. Exit:
+    Exit Program
+
+
+
+[Start] --> Display Editing Area --> User Types Text --> Store Text in Data Structure -- > Exit? -- Yes --> [End] 
+                                                                                                 -- No --> Back to Display Editing Area
+
+Set up GUI Framework (e.g., Qt):
+
+Create a main window.
+Add a text editing widget.
+Include menus or a toolbar for actions (save, open, etc.)
+Connect Signals/Slots (or your framework's equivalent):
+
+Trigger actions on menu clicks or button presses.
+React to keyboard input in the text editing widget.
+Implement Functionality Tied to Your Classes:
+
+Load files into your Document class on 'open.'
+Display the Document content in your text editing widget.
+Update your Document based on user edits.
