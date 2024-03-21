@@ -31,7 +31,7 @@ A user can create, edit, save, and open text files using the text editor, a stra
 
 I personally used QT and its documentation to complete this project. It was fun to learn a new library, defo made it wayy easier although learning it took me way longer than expected due to new concepts in C++ such as pointers
 
-<h6>Technologies Required: C++ programming language, GUI Libraries, File I/O Library, Compression Libraries, Regular Expression Library.</h6>
+<h6>Technologies Required: C++ programming language, GUI Libraries, File I/O Library.</h6>
 
 <h2>4. Minesweeper Game</h2>
 
