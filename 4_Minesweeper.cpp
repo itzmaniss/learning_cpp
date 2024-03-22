@@ -14,15 +14,20 @@ class Minesweeper {
 
             setDifficulty();
             generateBoard();
-            showPrivateBoard();
-            while(!lost) {
-                showBoard();
+            showPrivateBoardCLI();
+            int toBeRevealed = (boardSize * boardSize) - numMines;
+
+            while(!lost && revealed != toBeRevealed) {
+                cout << revealed << " " << toBeRevealed << endl;
+                showBoardCLI();
                 cout << "Choose the coordinates you want to open: " << endl << "x: ";
                 x = pickCoord('X');
                 cout << "Y: ";
                 y = pickCoord('Y');
-                reveal(x, y);
+                reveal(x, y, false);
             }
+
+            cout << "YOU HAVE WON!! GREAT JOB!" << endl;
 
         }
     
@@ -32,6 +37,7 @@ class Minesweeper {
         int difficulty;
         int boardSize;
         int numMines;
+        int revealed = 0;
         vector<vector<int>> privateBoard;
         vector<vector<char>> playerBoard;
 
@@ -133,38 +139,44 @@ class Minesweeper {
     }   
 
 
-    void reveal(const int y, const int x, bool recurse = false) {
-        if (y < 0 || y > boardSize - 1 || x < 0 || x > boardSize - 1 || playerBoard[x][y] != '*') {return;}
-        if (privateBoard[x][y] == 0) {
+    void reveal(const int x, const int y, bool recursed) {
 
-            playerBoard[x][y] = '0';
+        int boardValue = privateBoard[y][x];
 
-            reveal(x, y+1, true);
-            //reveal south
-            reveal(x, y-1, true);
-            //reveal East
-            reveal(x+1, y, true);
-            //reveal West
-            reveal(x-1, y, true);
-            //reveal NorthEast
-            reveal(x+1, y+1, true);
-            //reveal NorthWest
-            reveal(x-1, y+1, true);
-            //reveal SouthEast
-            reveal(x+1, y-1, true);
-            //reveal SouthWest
-            reveal(x-1, y-1, true);
+ 
+        // check if already revealed
+        if (playerBoard[y][x] != '*') {return;} 
 
-        } else if(privateBoard[x][y] == 9 && recurse == false){
-            cout << "YOU LOST NOOB!";
+        if (recursed == false && boardValue == 9) {
+            cout << "YOU LOSE NOOB!!!!" << endl;
             lost = true;
-            
-        } else if (privateBoard[x][y] != 9){
-            playerBoard[x][y] = privateBoard[x][y] + '0';
-        }
-    }
 
-    void showPrivateBoard(){
+        } else if (recursed == true && boardValue == 9) {
+            return;
+
+        } else if (privateBoard[y][x] != 0) {
+            playerBoard[y][x] = boardValue + '0';
+            revealed ++;
+
+        } else {
+            playerBoard[y][x] = boardValue + '0';
+            revealed ++;
+
+            for (int i= -1; i < 2; i++) {
+                if ((y + i) < 0 || (y + i) > (boardSize - 1)){continue;}
+
+                for (int j = -1; j < 2; j++) {
+                    if ((x + j) < 0 || (x + j) > (boardSize - 1) || (x == 0 && y == 0) > boardSize - 1) {continue;}
+
+                    reveal((x + j), (y + i), true);
+                    }
+                }
+            }
+        }
+    
+
+
+    void showPrivateBoardCLI(){
         for (int i = 0; i < privateBoard.size(); i++) { 
             for (int j = 0; j < privateBoard[i].size(); j++) 
                 cout << privateBoard[i][j] << " "; 
@@ -172,24 +184,32 @@ class Minesweeper {
             }
     }
 
-    void showBoard () {
+    void showBoardCLI () {
+        for (int i = 0; i < playerBoard.size() + 1; i++) {
+            if (i < 10) {cout<< 0;}
+            cout << i << " ";
+        }
+        cout << endl;
         for (int i = 0; i < playerBoard.size(); i++) { 
-            for (int j = 0; j < playerBoard[i].size(); j++) 
-                cout << playerBoard[i][j] << " "; 
-                cout << endl; 
-            } 
+            if (i < 9) {cout << 0;}
+            cout << i + 1 << " ";
+            for (int j = 0; j < playerBoard[i].size(); j++) {
+                cout << playerBoard[i][j] << "  "; 
+            }
+            cout << endl; 
+        } 
     }
 
     int pickCoord(const char y) {
         int x;
         cin >> x;
-        while (x < 0 || x > 8) {
+        while (x < 1 || x > boardSize) {
             cin.clear();
-            cin.ignore();
-            cout << "Invalid Input please enter a number between 0 and 8." << endl << y << ": ";
+            cin.ignore(1000, '\n');
+            cout << "Invalid Input please enter a number between 0 and " << boardSize - 1 << "." << endl << y << ": ";
             cin >> x;
         }
-        return x;
+        return x - 1;
     }
 };
 /*
@@ -222,6 +242,3 @@ int main() {
     Minesweeper game;
     game.startGame();
 }
-
-//to run 
-//g++ -I src/include -L src/lib -o MineSweeper -;mingw32 -lSDL2main -lSDL2

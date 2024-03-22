@@ -29,8 +29,6 @@ The guessing project in C++ is a game designed to test the player’s luck and k
 
 A user can create, edit, save, and open text files using the text editor, a straightforward program. In addition to a user interface for the user to interact with, it uses classes and objects to store and alter the content. Basic text editing functions including copying, pasting, deleting, searching, and printing text are all available in the text editor. Text Editor is a simple application that is built into C++ programming language. We can use Graphical User Interface (GUI) Libraries such as QT, and GTK+ for creating a graphical user interface. Libraries such as Pango or Cairo are required to display text on the screen.
 
-I personally used QT and its documentation to complete this project. It was fun to learn a new library, defo made it wayy easier although learning it took me way longer than expected due to new concepts in C++ such as pointers
-
 <h6>Technologies Required: C++ programming language, GUI Libraries, File I/O Library.</h6>
 
 <h2>4. Minesweeper Game</h2>

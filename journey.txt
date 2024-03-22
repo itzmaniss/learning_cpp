@@ -1,0 +1,27 @@
+Day 1 (17/03/2024):
+
+Completed Project 1(Rock Paper Scissors).  
+It was straight forward. Coding fundamentals were tested, but being familiar with coding alr it was easy for me to navigate through
+
+Completed Project 2(Casino Number Guessing Game) as well. 
+Relatively easy as well. Tried OOP in C++ for the first time.
+Generating random number is a bit more complicated than in python but it was fine, got online documentation to guide through. Need to understand further on what the generator does though.
+
+Day 2 (18/03/2024):
+Completed Project 3(TextEditor).
+I personally used QT and its documentation to complete this project. It was fun to learn a new library, defo made it wayy easier although learning it took me way longer than expected due to new concepts in C++ such as pointers. In the end QT kinda did most of the work so kinda a wasted project for me in terms of C++ goes. but got to lear a library.
+
+Day 3, 4 (19/03/2024, 20/03/2024)
+DID NO WORK, NOT AT HOME.
+
+Day 5 (21/03/2024)
+Started on Project 4(Minesweeper). 
+Wasted quite a lot of time tryna set up SDL. Still did not work after 2 hours of tinkering around. 
+Started working on the game logic instead and got halfway through until a bug stumped me. Tried working on it for about an hour. Got too tired to continue and went to Sleep.
+Building this was quite similar to building Project 2, but wayy more game logic is requrired.
+
+Day 6 (22/03/2024)
+Continued working on Project 4(Minesweeper).
+Got it working for cli after debugging for hours but having issues with SDL. Going to skip SDL for now to move on first. Will come back after Project 5.
+Today had a better coding session. Broke down my bug line by line and went trhough my code for each case on my ipad. Realised i forgot to consider the edge case (HAISSSS).
+Also spend 1hour debugging an error for edge case dodging. i wrote ```|| (x + j) ||``` instead of ```|| (x + j) > boardSize || ```. More wasted time. But great lesson learnt hahaha
